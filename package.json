@@ -1,0 +1,11 @@
+{
+  "name": "spfx-file-browser",
+  "version": "1.0.0",
+  "description": "Prototype SPFx web part using @microsoft/file-browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Coughlin",
+  "license": "MIT"
+}
