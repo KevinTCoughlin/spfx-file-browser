@@ -10,6 +10,7 @@ import {
 import * as strings from 'FileBrowserWebPartWebPartStrings';
 import FileBrowserWebPart from './components/FileBrowserWebPart';
 import { IFileBrowserWebPartProps } from './components/IFileBrowserWebPartProps';
+import { GRAPH_BASE_URL } from '@microsoft/microsoft-graph-client';
 
 export interface IFileBrowserWebPartWebPartProps {
   description: string;
@@ -17,11 +18,18 @@ export interface IFileBrowserWebPartWebPartProps {
 
 export default class FileBrowserWebPartWebPart extends BaseClientSideWebPart<IFileBrowserWebPartWebPartProps> {
 
+  private getAuthToken = (): Promise<string> => {
+    return this.context.aadTokenProviderFactory.getTokenProvider().then(tokenProvider => {
+      return tokenProvider.getToken(GRAPH_BASE_URL);
+    });
+  }
+
   public render(): void {
     const element: React.ReactElement<IFileBrowserWebPartProps > = React.createElement(
       FileBrowserWebPart,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        getAuthToken: this.getAuthToken
       }
     );
 
