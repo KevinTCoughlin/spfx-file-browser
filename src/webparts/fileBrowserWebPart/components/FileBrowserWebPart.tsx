@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IFileBrowserWebPartProps } from './IFileBrowserWebPartProps';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { GRAPH_BASE_URL } from '@microsoft/microsoft-graph-client';
+import { GraphFileBrowser } from '@microsoft/file-browser';
 
 export default class FileBrowserWebPart extends BaseClientSideWebPart<IFileBrowserWebPartProps> {
   private getAuthToken(): Promise<string> {
@@ -12,7 +13,8 @@ export default class FileBrowserWebPart extends BaseClientSideWebPart<IFileBrows
 
   public render(): React.ReactElement<IFileBrowserWebPartProps> {
     return (
-      <div></div>
+      <GraphFileBrowser
+        getAuthenticationToken={this.getAuthToken} />
     );
   }
 }
