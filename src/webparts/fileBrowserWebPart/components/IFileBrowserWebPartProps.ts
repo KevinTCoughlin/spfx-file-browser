@@ -1,4 +1,5 @@
 export interface IFileBrowserWebPartProps {
   description: string;
-  getAuthToken: () => Promise<string>
+  getAuthToken: () => Promise<string>;
+  listId: string;
 }
